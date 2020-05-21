@@ -49,13 +49,16 @@ func main() {
 		fmt.Println(resp.StatusCode)
 	}
 
-	msg, _ := ioutil.ReadAll(resp.Body)
-	text := string(msg)
-	fmt.Println(text)
+	//msg, _ := ioutil.ReadAll(resp.Body)
+	//text := string(msg)
+	//fmt.Println(text)
 
 	var res RespMsg
-	err = json.Unmarshal(msg, &res)
-	if err != nil {
+	//err = json.Unmarshal(msg, &res)
+	//if err != nil {
+	//	return
+	//}
+	if err = json.NewDecoder(resp.Body).Decode(&res); err != nil {
 		return
 	}
 	fmt.Println(res.Result)
