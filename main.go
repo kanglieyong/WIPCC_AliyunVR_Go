@@ -11,7 +11,7 @@ import (
 )
 
 const (
-	appKey      = `I8amHfNKhLvO87K`
+	appKey      = `oI8amHfNKhLvO87K`
 	accessToken = `dd31ec984cb4a7f9b41a334b053f948`
 )
 
@@ -40,7 +40,14 @@ func main() {
 	req.Header.Add(`Host`, `nls-gateway.cn-shanghai.aliyuncs.com`)
 
 	resp, err := client.Do(req)
+	if err != nil {
+		return
+	}
 	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		fmt.Println(resp.StatusCode)
+	}
 
 	msg, _ := ioutil.ReadAll(resp.Body)
 	text := string(msg)
