@@ -35,7 +35,7 @@ type Model struct {
 	Type         string      `xml:"Type,attr"`
 	DefaultValue string      `xml:"DefaultValue,attr"`
 	DefaultName  string      `xml:"DefaultName,attr"`
-	PinYinMatch  string      `xml:"PinYinMatch"`
+	PinYinMatch  string      `xml:"PinYinMatch,omitempty"`
 	Selects      []Selection `xml:"Selection"`
 }
 
@@ -65,8 +65,8 @@ func main() {
 		fmt.Println("xml Parse err")
 		return
 	}
-	//fmt.Println(xmlConf)
-	//return
+	fmt.Println(xmlConf)
+	return
 
 	// var conf YAMLConfig
 	// confContents, err := ioutil.ReadFile("conf/VRConfig.yaml")
