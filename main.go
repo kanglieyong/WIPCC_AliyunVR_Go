@@ -11,7 +11,6 @@ import (
 	"strconv"
 )
 
-<<<<<<< HEAD
 type YAMLConfig struct {
 	AccessToken string `yaml:"access_token"`
 	AppKey      string `yaml:"app_key"`
@@ -45,12 +44,6 @@ type Selection struct {
 	Value   string `xml:"Value,attr"`
 	KeyWord string `xml:"KeyWord,attr"`
 }
-=======
-const (
-	appKey      = `oI8amHfNKhLvO87K`
-	accessToken = `dd31ec984cb4a7f9b41a334b053f948`
-)
->>>>>>> 5923ef4c3aec32cfbb6486b123ea1229404f7d15
 
 type RespMsg struct {
 	TaskID  string `json:"task_id"`
