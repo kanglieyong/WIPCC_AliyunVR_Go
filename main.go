@@ -65,8 +65,8 @@ func main() {
 		fmt.Println("xml Parse err")
 		return
 	}
-	fmt.Println(xmlConf)
-	return
+	//fmt.Println(xmlConf)
+	//return
 
 	// var conf YAMLConfig
 	// confContents, err := ioutil.ReadFile("conf/VRConfig.yaml")
@@ -88,6 +88,7 @@ func main() {
 		return
 	}
 	contentLen := len(contents)
+	fmt.Printf("%d\n", contentLen)
 
 	urlsite := `http://nls-gateway.cn-shanghai.aliyuncs.com/stream/v1/asr?appkey=` + xmlConf.AppKey + `&sample_rate=8000`
 
@@ -109,16 +110,16 @@ func main() {
 		return
 	}
 
-	//msg, _ := ioutil.ReadAll(resp.Body)
-	//text := string(msg)
-	//fmt.Println(text)
+	msg, _ := ioutil.ReadAll(resp.Body)
+	text := string(msg)
+	fmt.Println(text)
 	var res RespMsg
-	//err = json.Unmarshal(msg, &res)
-	//if err != nil {
-	//	return
-	//}
-	if err = json.NewDecoder(resp.Body).Decode(&res); err != nil {
+	err = json.Unmarshal(msg, &res)
+	if err != nil {
 		return
 	}
+	//if err = json.NewDecoder(resp.Body).Decode(&res); err != nil {
+	//	return
+	//}
 	fmt.Println(res.Result)
 }
